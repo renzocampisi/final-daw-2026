@@ -120,9 +120,6 @@
   border: 1px solid #57606a;
   cursor: default;
 }
-.oculto {
-  display: none;
-}
 .pantalla-juego {
   display: flex;
   flex-direction: column;
@@ -261,6 +258,9 @@
 .texto-modal {
   color: #1c2128;
   font-size: 0.95rem;
+}
+.oculto {
+  display: none;
 }
 @media (max-width: 600px) {
   .barra-estado {
