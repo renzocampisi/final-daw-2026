@@ -1,5 +1,8 @@
 'use strict';
 var idTemporizadorBusqueda = null;
+var MAPA_ACENTOS = { 'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'à': 'a', 'è': 'e', 'ì': 'i', 'ò': 'o', 'ù': 'u', 'ä': 'a', 'ë': 'e', 'ï': 'i', 'ö': 'o', 'ü': 'u', 'â': 'a', 'ê': 'e', 'î': 'i', 'ô': 'o', 'û': 'u', 'ñ': 'n', 'ç': 'c' };
+var LIMITE_BUSQUEDA_AMPLIADA = 25;
+var estadoBusquedaAmpliada = { consultaOriginal: '', consultaActual: '' };
 function manejarJugadorSecretoObtenido(jugadorSecreto) {
   rehabilitarBotonesInicio();
   inicializarEstadoPartida(estadoJuego.nombreJugadorHumano, jugadorSecreto);
@@ -33,12 +36,55 @@ function manejarEnvioBienvenida(evento) {
   estadoJuego.nombreJugadorHumano = nombre;
   iniciarNuevaPartida();
 }
-function manejarRespuestaBusqueda(listaJugadores) {
-  renderizarAutocompletado(listaJugadores);
+function normalizarTexto(texto) {
+  var resultado, i, caracter;
+  resultado = '';
+  texto = texto.toLowerCase();
+  for (i = 0; i < texto.length; i++) {
+    caracter = texto.charAt(i);
+    resultado += MAPA_ACENTOS[caracter] || caracter;
+  }
+  return resultado;
+}
+function filtrarPorCoincidenciaFlexible(listaJugadores, consultaOriginal) {
+  var consultaNormalizada, resultado, i;
+  consultaNormalizada = normalizarTexto(consultaOriginal);
+  resultado = [];
+  for (i = 0; i < listaJugadores.length; i++) {
+    if (normalizarTexto(listaJugadores[i].name).indexOf(consultaNormalizada) !== -1) {
+      resultado.push(listaJugadores[i]);
+    }
+  }
+  return resultado;
 }
 function manejarErrorBusqueda() {
   ocultarAutocompletado();
   mostrarModalError('No se pudo buscar jugadores. Revisá tu conexión.', null);
+}
+function intentarBusquedaAmpliada() {
+  if (estadoBusquedaAmpliada.consultaActual.length < 2) {
+    renderizarAutocompletado([]);
+    return;
+  }
+  buscarJugadores(estadoBusquedaAmpliada.consultaActual, LIMITE_BUSQUEDA_AMPLIADA).then(manejarResultadoBusquedaAmpliada).catch(manejarErrorBusqueda);
+}
+function manejarResultadoBusquedaAmpliada(listaJugadores) {
+  var listaFiltrada;
+  if (listaJugadores.length === 0) {
+    estadoBusquedaAmpliada.consultaActual = estadoBusquedaAmpliada.consultaActual.slice(0, -1);
+    intentarBusquedaAmpliada();
+    return;
+  }
+  listaFiltrada = filtrarPorCoincidenciaFlexible(listaJugadores, estadoBusquedaAmpliada.consultaOriginal);
+  renderizarAutocompletado(listaFiltrada);
+}
+function manejarRespuestaBusqueda(listaJugadores) {
+  if (listaJugadores.length === 0) {
+    estadoBusquedaAmpliada.consultaActual = estadoBusquedaAmpliada.consultaOriginal.slice(0, -1);
+    intentarBusquedaAmpliada();
+    return;
+  }
+  renderizarAutocompletado(listaJugadores);
 }
 function ejecutarBusquedaDiferida() {
   var consulta;
@@ -47,6 +93,7 @@ function ejecutarBusquedaDiferida() {
     ocultarAutocompletado();
     return;
   }
+  estadoBusquedaAmpliada.consultaOriginal = consulta;
   buscarJugadores(consulta, 8).then(manejarRespuestaBusqueda).catch(manejarErrorBusqueda);
 }
 function manejarEntradaBusqueda() {
