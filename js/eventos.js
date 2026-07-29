@@ -54,6 +54,9 @@ function manejarEntradaBusqueda() {
 }
 function procesarIntento(jugadorSeleccionado) {
   var resultado;
+  if (estadoJuego.partidaTerminada) {
+    return;
+  }
   resultado = registrarIntento(jugadorSeleccionado);
   if (resultado.tipo === 'repetido') {
     mostrarModalError('Ya intentaste con ese jugador.', null);
