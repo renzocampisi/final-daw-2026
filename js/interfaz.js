@@ -2,6 +2,24 @@
 var resultadosAutocompletado = [];
 var idIntervaloTemporizador = null;
 var accionReintentarError = null;
+var IDS_BOTONES_INICIO = ['boton-empezar', 'boton-reiniciar', 'boton-victoria-reiniciar', 'boton-derrota-reiniciar'];
+function deshabilitarBotonesInicio() {
+  var i, boton;
+  for (i = 0; i < IDS_BOTONES_INICIO.length; i++) {
+    boton = document.getElementById(IDS_BOTONES_INICIO[i]);
+    boton.setAttribute('data-texto-original', boton.textContent);
+    boton.textContent = 'Cargando...';
+    boton.disabled = true;
+  }
+}
+function rehabilitarBotonesInicio() {
+  var i, boton;
+  for (i = 0; i < IDS_BOTONES_INICIO.length; i++) {
+    boton = document.getElementById(IDS_BOTONES_INICIO[i]);
+    boton.textContent = boton.getAttribute('data-texto-original');
+    boton.disabled = false;
+  }
+}
 function crearCeldaResultado(texto, clase) {
   var celda;
   celda = document.createElement('div');

@@ -1,6 +1,7 @@
 'use strict';
 var idTemporizadorBusqueda = null;
 function manejarJugadorSecretoObtenido(jugadorSecreto) {
+  rehabilitarBotonesInicio();
   inicializarEstadoPartida(estadoJuego.nombreJugadorHumano, jugadorSecreto);
   limpiarTablero();
   actualizarContador(estadoJuego.intentosMaximos);
@@ -9,6 +10,7 @@ function manejarJugadorSecretoObtenido(jugadorSecreto) {
   mostrarPantallaJuego();
 }
 function manejarErrorJugadorSecreto() {
+  rehabilitarBotonesInicio();
   mostrarModalError('No se pudo cargar el jugador secreto. Revisá tu conexión.', reintentarObtenerJugadorSecreto);
 }
 function reintentarObtenerJugadorSecreto() {
@@ -16,6 +18,7 @@ function reintentarObtenerJugadorSecreto() {
   iniciarNuevaPartida();
 }
 function iniciarNuevaPartida() {
+  deshabilitarBotonesInicio();
   obtenerJugadorSecreto().then(manejarJugadorSecretoObtenido).catch(manejarErrorJugadorSecreto);
 }
 function manejarEnvioBienvenida(evento) {
