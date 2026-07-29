@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futbolle</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <a href="index.html" class="logo">Futbolle</a>
+    <nav class="nav-principal">
+      <a href="index.html" class="enlace-nav">Juego</a>
+      <a href="contacto.html" class="enlace-nav">Contacto</a>
+      <a id="enlace-github" class="enlace-nav" href="https://github.com/renzocampisi/final-daw-2026" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+  <main class="contenido-principal">
+    <section id="pantalla-bienvenida" class="pantalla-bienvenida">
+      <h1 class="titulo-juego">Futbolle</h1>
+      <p class="texto-intro">Adiviná el futbolista secreto en 8 intentos. Escribí tu nombre para empezar.</p>
+      <form id="formulario-bienvenida" class="formulario-bienvenida" novalidate>
+        <label for="input-nombre-jugador" class="etiqueta">Tu nombre</label>
+        <input id="input-nombre-jugador" class="campo-texto" type="text" maxlength="30" autocomplete="off">
+        <p id="error-nombre-jugador" class="mensaje-error oculto">Ingresá al menos 3 letras.</p>
+        <button id="boton-empezar" class="boton-primario" type="submit">Jugar</button>
+      </form>
+    </section>
+    <section id="pantalla-juego" class="pantalla-juego oculto">
+      <div class="barra-estado">
+        <p class="dato-estado">Intentos restantes: <span id="contador-intentos">8</span></p>
+        <p class="dato-estado">Tiempo: <span id="temporizador">00:00</span></p>
+        <button id="boton-reiniciar" class="boton-secundario" type="button">Reiniciar partida</button>
+      </div>
+      <div class="buscador">
+        <label for="input-busqueda" class="etiqueta">Buscar jugador</label>
+        <input id="input-busqueda" class="campo-texto" type="text" autocomplete="off">
+        <ul id="lista-autocompletado" class="lista-autocompletado oculto"></ul>
+      </div>
+      <div class="tablero-juego">
+        <div class="fila-encabezado">
+          <span class="celda-encabezado">Jugador</span>
+          <span class="celda-encabezado">Nacionalidad</span>
+          <span class="celda-encabezado">Club</span>
+          <span class="celda-encabezado">Posición</span>
+          <span class="celda-encabezado">Edad</span>
+          <span class="celda-encabezado">Overall</span>
+          <span class="celda-encabezado">Altura</span>
+        </div>
+        <div id="cuerpo-tablero" class="cuerpo-tablero"></div>
+      </div>
+    </section>
+  </main>
+  <div id="modal-victoria" class="modal oculto">
+    <div class="contenido-modal">
+      <h2 class="titulo-modal">¡Ganaste!</h2>
+      <p id="texto-victoria" class="texto-modal"></p>
+      <button id="boton-victoria-reiniciar" class="boton-primario" type="button">Jugar de nuevo</button>
+    </div>
+  </div>
+  <div id="modal-derrota" class="modal oculto">
+    <div class="contenido-modal">
+      <h2 class="titulo-modal">Perdiste</h2>
+      <p id="texto-derrota" class="texto-modal"></p>
+      <button id="boton-derrota-reiniciar" class="boton-primario" type="button">Jugar de nuevo</button>
+    </div>
+  </div>
+  <div id="modal-error" class="modal oculto">
+    <div class="contenido-modal">
+      <h2 class="titulo-modal">Ocurrió un error</h2>
+      <p id="texto-error" class="texto-modal"></p>
+      <button id="boton-error-reintentar" class="boton-primario oculto" type="button">Reintentar</button>
+      <button id="boton-error-cerrar" class="boton-secundario" type="button">Cerrar</button>
+    </div>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/juego.js"></script>
+  <script src="js/interfaz.js"></script>
+  <script src="js/eventos.js"></script>
+  <script src="js/init.js"></script>
+</body>
+</html>

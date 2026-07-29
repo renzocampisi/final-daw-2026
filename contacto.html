@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futbolle — Contacto</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <a href="index.html" class="logo">Futbolle</a>
+    <nav class="nav-principal">
+      <a href="index.html" class="enlace-nav">Juego</a>
+      <a href="contacto.html" class="enlace-nav">Contacto</a>
+      <a id="enlace-github" class="enlace-nav" href="https://github.com/renzocampisi/final-daw-2026" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+  <main class="contenido-principal">
+    <section class="pantalla-contacto">
+      <h1 class="titulo-juego">Contacto</h1>
+      <p class="texto-intro">¿Encontraste un error o querés dejar un comentario? Escribinos.</p>
+      <form id="formulario-contacto" class="formulario-contacto" novalidate>
+        <label for="input-nombre-contacto" class="etiqueta">Nombre</label>
+        <input id="input-nombre-contacto" class="campo-texto" type="text" maxlength="40" autocomplete="off">
+        <p id="error-nombre-contacto" class="mensaje-error oculto">Ingresá un nombre válido, solo letras y números.</p>
+        <label for="input-mail-contacto" class="etiqueta">Mail</label>
+        <input id="input-mail-contacto" class="campo-texto" type="text" maxlength="60" autocomplete="off">
+        <p id="error-mail-contacto" class="mensaje-error oculto">Ingresá un mail válido.</p>
+        <label for="input-mensaje-contacto" class="etiqueta">Mensaje</label>
+        <textarea id="input-mensaje-contacto" class="campo-texto campo-mensaje" maxlength="500"></textarea>
+        <p id="error-mensaje-contacto" class="mensaje-error oculto">El mensaje debe tener más de 5 caracteres.</p>
+        <button id="boton-enviar-contacto" class="boton-primario" type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+  <script src="js/contacto.js"></script>
+</body>
+</html>
