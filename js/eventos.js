@@ -119,10 +119,14 @@ function procesarIntento(jugadorSeleccionado) {
   actualizarContador(resultado.intentosRestantes);
   if (resultado.estadoPartida === 'victoria') {
     detenerIntervaloTemporizador();
+    reproducirSonidoVictoria();
     mostrarModalVictoria(estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
   } else if (resultado.estadoPartida === 'derrota') {
     detenerIntervaloTemporizador();
+    reproducirSonidoDerrota();
     mostrarModalDerrota(estadoJuego.jugadorSecreto);
+  } else if (intentoTieneAcierto(resultado.intento.resultado)) {
+    reproducirSonidoAcierto();
   }
 }
 function manejarClickAutocompletado(evento) {

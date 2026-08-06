@@ -36,6 +36,14 @@ function compararJugadores(jugadorIntento, jugadorSecreto) {
   };
   return resultado;
 }
+function intentoTieneAcierto(resultadoComparacion) {
+  return resultadoComparacion.nacionalidad === 'correcto' ||
+    resultadoComparacion.club === 'correcto' ||
+    resultadoComparacion.posicion === 'correcto' ||
+    resultadoComparacion.edad === 'correcto' ||
+    resultadoComparacion.overall === 'correcto' ||
+    resultadoComparacion.altura === 'correcto';
+}
 function yaFueIntentado(idJugador) {
   var i;
   for (i = 0; i < estadoJuego.intentosRealizados.length; i++) {

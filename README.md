@@ -29,6 +29,10 @@ Además del juego, hay una página de contacto con un formulario para dejar nomb
 
 Arriba a la derecha, en la barra de navegación, hay un botón para cambiar entre modo claro y oscuro. La elección queda guardada en el navegador, así que se mantiene aunque se recargue la página o se cambie entre el juego y la página de contacto.
 
+## Sonido
+
+El juego tiene sonidos cortos generados por código (sin archivos de audio): uno al acertar algún dato del jugador, uno al ganar la partida y uno al perder.
+
 ## Cómo está organizado el proyecto
 
 ```
@@ -45,6 +49,7 @@ js/
   init.js            arranque de la página principal
   contacto.js        validación y envío del formulario de contacto
   tema.js            botón de modo oscuro/claro, se guarda en LocalStorage
+  sonido.js          sonidos cortos (acierto, victoria, derrota) generados por código
 img/                 imágenes propias del sitio
 ```
 
