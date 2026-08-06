@@ -25,6 +25,10 @@ El juego está publicado con GitHub Pages en:
 
 Además del juego, hay una página de contacto con un formulario para dejar nombre, mail y un mensaje. Al enviarlo se abre el programa de mail que tengas configurado en tu computadora, con el mensaje ya cargado.
 
+## Modo oscuro
+
+Arriba a la derecha, en la barra de navegación, hay un botón para cambiar entre modo claro y oscuro. La elección queda guardada en el navegador, así que se mantiene aunque se recargue la página o se cambie entre el juego y la página de contacto.
+
 ## Cómo está organizado el proyecto
 
 ```
@@ -40,6 +44,7 @@ js/
   eventos.js         qué pasa cuando el usuario hace click o escribe
   init.js            arranque de la página principal
   contacto.js        validación y envío del formulario de contacto
+  tema.js            botón de modo oscuro/claro, se guarda en LocalStorage
 img/                 imágenes propias del sitio
 ```
 
