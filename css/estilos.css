@@ -25,6 +25,27 @@
 .enlace-nav:hover {
   color: #d8f3dc;
 }
+.boton-tema {
+  display: flex;
+  align-items: center;
+}
+.icono-tema {
+  display: block;
+}
+.luna-base {
+  fill: currentColor;
+}
+.luna-recorte {
+  fill: #0b6e4f;
+}
+.sol-centro {
+  fill: currentColor;
+}
+.sol-rayo {
+  stroke: currentColor;
+  stroke-width: 2px;
+  stroke-linecap: round;
+}
 .contenido-principal {
   display: flex;
   flex-direction: column;

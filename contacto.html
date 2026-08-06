@@ -14,7 +14,23 @@
       <a href="index.html" class="enlace-nav">Juego</a>
       <a href="contacto.html" class="enlace-nav">Contacto</a>
       <a id="enlace-github" class="enlace-nav" href="https://github.com/renzocampisi/final-daw-2026" target="_blank" rel="noopener">GitHub</a>
-      <button id="boton-modo-oscuro" class="enlace-nav" type="button">Modo oscuro</button>
+      <button id="boton-modo-oscuro" class="enlace-nav boton-tema" type="button" aria-label="Cambiar a modo oscuro">
+        <svg id="icono-luna" class="icono-tema" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+          <circle class="luna-base" cx="12" cy="12" r="9"></circle>
+          <circle class="luna-recorte" cx="17" cy="9" r="8"></circle>
+        </svg>
+        <svg id="icono-sol" class="icono-tema oculto" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+          <circle class="sol-centro" cx="12" cy="12" r="5"></circle>
+          <line class="sol-rayo" x1="12" y1="1" x2="12" y2="4"></line>
+          <line class="sol-rayo" x1="12" y1="20" x2="12" y2="23"></line>
+          <line class="sol-rayo" x1="1" y1="12" x2="4" y2="12"></line>
+          <line class="sol-rayo" x1="20" y1="12" x2="23" y2="12"></line>
+          <line class="sol-rayo" x1="4.2" y1="4.2" x2="6.3" y2="6.3"></line>
+          <line class="sol-rayo" x1="17.7" y1="17.7" x2="19.8" y2="19.8"></line>
+          <line class="sol-rayo" x1="4.2" y1="19.8" x2="6.3" y2="17.7"></line>
+          <line class="sol-rayo" x1="17.7" y1="6.3" x2="19.8" y2="4.2"></line>
+        </svg>
+      </button>
     </nav>
   </header>
   <main class="contenido-principal">
