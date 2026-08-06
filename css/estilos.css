@@ -262,6 +262,55 @@
 .oculto {
   display: none;
 }
+body.modo-oscuro {
+  background: #12181f;
+  color: #e8ecf1;
+}
+.modo-oscuro .pantalla-bienvenida, .modo-oscuro .pantalla-contacto {
+  border: 1px solid #333d47;
+  background: #1c232b;
+}
+.modo-oscuro .texto-intro {
+  color: #9aa7b5;
+}
+.modo-oscuro .etiqueta {
+  color: #9aa7b5;
+}
+.modo-oscuro .campo-texto {
+  border: 1px solid #333d47;
+  background: #232b34;
+  color: #e8ecf1;
+}
+.modo-oscuro .boton-secundario {
+  background: #1c232b;
+}
+.modo-oscuro .boton-secundario:hover {
+  background: #2a323c;
+}
+.modo-oscuro .barra-estado {
+  border: 1px solid #333d47;
+  background: #1c232b;
+}
+.modo-oscuro .dato-estado {
+  color: #e8ecf1;
+}
+.modo-oscuro .lista-autocompletado {
+  border: 1px solid #333d47;
+  background: #1c232b;
+}
+.modo-oscuro .item-autocompletado {
+  border-bottom: 1px solid #333d47;
+  color: #e8ecf1;
+}
+.modo-oscuro .item-autocompletado:hover {
+  background: #2a323c;
+}
+.modo-oscuro .contenido-modal {
+  background: #1c232b;
+}
+.modo-oscuro .texto-modal {
+  color: #e8ecf1;
+}
 @media (max-width: 600px) {
   .barra-estado {
     flex-direction: column;
