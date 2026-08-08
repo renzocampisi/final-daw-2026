@@ -78,6 +78,12 @@ function mostrarPantallaJuego() {
   document.getElementById('pantalla-bienvenida').className = 'pantalla-bienvenida oculto';
   document.getElementById('pantalla-juego').className = 'pantalla-juego';
 }
+function mostrarFotoSecreto(urlFoto) {
+  document.getElementById('foto-jugador-secreto').src = urlFoto;
+}
+function actualizarBlurFotoSecreto(nivelBlur) {
+  document.getElementById('foto-jugador-secreto').className = 'foto-jugador-secreto blur-' + nivelBlur;
+}
 function mostrarErrorBienvenida(mensaje) {
   var elemento;
   elemento = document.getElementById('error-nombre-jugador');

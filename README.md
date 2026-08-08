@@ -37,6 +37,10 @@ El juego tiene sonidos cortos generados por código (sin archivos de audio): uno
 
 En la pantalla de juego hay un botón "Historial" que muestra un popup con todas las partidas jugadas: jugador, resultado, cantidad de intentos, fecha y duración. Se puede ordenar por fecha o por cantidad de intentos. Se guarda en el navegador (LocalStorage), así que se mantiene aunque se cierre la página.
 
+## Pista de la foto
+
+Mientras jugás, se ve la foto del jugador secreto bien desenfocada. Cada intento fallido la va aclarando un poco más, hasta que se ve nítida si ganás o si se te acaban los intentos.
+
 ## Cómo está organizado el proyecto
 
 ```

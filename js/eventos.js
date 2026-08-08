@@ -10,6 +10,8 @@ function manejarJugadorSecretoObtenido(jugadorSecreto) {
   actualizarContador(estadoJuego.intentosMaximos);
   document.getElementById('temporizador').textContent = '00:00';
   detenerIntervaloTemporizador();
+  mostrarFotoSecreto(jugadorSecreto.photo);
+  actualizarBlurFotoSecreto(NUMERO_MAXIMO_INTENTOS);
   mostrarPantallaJuego();
 }
 function manejarErrorJugadorSecreto() {
@@ -120,15 +122,20 @@ function procesarIntento(jugadorSeleccionado) {
   if (resultado.estadoPartida === 'victoria') {
     detenerIntervaloTemporizador();
     reproducirSonidoVictoria();
+    actualizarBlurFotoSecreto(0);
     guardarPartidaEnHistorial(estadoJuego.nombreJugadorHumano, 'ganada', estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
     mostrarModalVictoria(estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
   } else if (resultado.estadoPartida === 'derrota') {
     detenerIntervaloTemporizador();
     reproducirSonidoDerrota();
+    actualizarBlurFotoSecreto(0);
     guardarPartidaEnHistorial(estadoJuego.nombreJugadorHumano, 'perdida', estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
     mostrarModalDerrota(estadoJuego.jugadorSecreto);
-  } else if (intentoTieneAcierto(resultado.intento.resultado)) {
-    reproducirSonidoAcierto();
+  } else {
+    actualizarBlurFotoSecreto(NUMERO_MAXIMO_INTENTOS - estadoJuego.intentosRealizados.length);
+    if (intentoTieneAcierto(resultado.intento.resultado)) {
+      reproducirSonidoAcierto();
+    }
   }
 }
 function manejarClickAutocompletado(evento) {

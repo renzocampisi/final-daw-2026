@@ -162,6 +162,45 @@
   font-size: 0.95rem;
   font-weight: 600;
 }
+.foto-secreto-wrap {
+  display: flex;
+  justify-content: center;
+}
+.foto-jugador-secreto {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0b6e4f;
+  transition: filter 0.4s ease;
+}
+.blur-8 {
+  filter: blur(20px);
+}
+.blur-7 {
+  filter: blur(17.5px);
+}
+.blur-6 {
+  filter: blur(15px);
+}
+.blur-5 {
+  filter: blur(12.5px);
+}
+.blur-4 {
+  filter: blur(10px);
+}
+.blur-3 {
+  filter: blur(7.5px);
+}
+.blur-2 {
+  filter: blur(5px);
+}
+.blur-1 {
+  filter: blur(2.5px);
+}
+.blur-0 {
+  filter: blur(0);
+}
 .buscador {
   position: relative;
   display: flex;
