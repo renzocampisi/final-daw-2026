@@ -48,6 +48,7 @@
       <div class="barra-estado">
         <p class="dato-estado">Intentos restantes: <span id="contador-intentos">8</span></p>
         <p class="dato-estado">Tiempo: <span id="temporizador">00:00</span></p>
+        <button id="boton-historial" class="boton-secundario" type="button">Historial</button>
         <button id="boton-reiniciar" class="boton-secundario" type="button">Reiniciar partida</button>
       </div>
       <div class="buscador">
@@ -91,11 +92,30 @@
       <button id="boton-error-cerrar" class="boton-secundario" type="button">Cerrar</button>
     </div>
   </div>
+  <div id="modal-historial" class="modal oculto">
+    <div class="contenido-modal contenido-historial">
+      <h2 class="titulo-modal">Historial de partidas</h2>
+      <div class="controles-historial">
+        <button id="boton-ordenar-fecha" class="boton-secundario" type="button">Ordenar por fecha</button>
+        <button id="boton-ordenar-intentos" class="boton-secundario" type="button">Ordenar por intentos</button>
+      </div>
+      <div class="fila-encabezado-historial">
+        <span class="celda-encabezado-historial">Jugador</span>
+        <span class="celda-encabezado-historial">Resultado</span>
+        <span class="celda-encabezado-historial">Intentos</span>
+        <span class="celda-encabezado-historial">Fecha</span>
+        <span class="celda-encabezado-historial">Duración</span>
+      </div>
+      <div id="lista-historial" class="lista-historial"></div>
+      <button id="boton-cerrar-historial" class="boton-primario" type="button">Cerrar</button>
+    </div>
+  </div>
   <script src="js/tema.js"></script>
   <script src="js/api.js"></script>
   <script src="js/juego.js"></script>
   <script src="js/interfaz.js"></script>
   <script src="js/sonido.js"></script>
+  <script src="js/historial.js"></script>
   <script src="js/eventos.js"></script>
   <script src="js/init.js"></script>
 </body>

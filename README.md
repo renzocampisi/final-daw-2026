@@ -33,6 +33,10 @@ Arriba a la derecha, en la barra de navegación, hay un botón para cambiar entr
 
 El juego tiene sonidos cortos generados por código (sin archivos de audio): uno al acertar algún dato del jugador, uno al ganar la partida y uno al perder.
 
+## Historial de partidas
+
+En la pantalla de juego hay un botón "Historial" que muestra un popup con todas las partidas jugadas: jugador, resultado, cantidad de intentos, fecha y duración. Se puede ordenar por fecha o por cantidad de intentos. Se guarda en el navegador (LocalStorage), así que se mantiene aunque se cierre la página.
+
 ## Cómo está organizado el proyecto
 
 ```
@@ -50,6 +54,7 @@ js/
   contacto.js        validación y envío del formulario de contacto
   tema.js            botón de modo oscuro/claro, se guarda en LocalStorage
   sonido.js          sonidos cortos (acierto, victoria, derrota) generados por código
+  historial.js       guardar y mostrar el historial de partidas jugadas (LocalStorage)
 img/                 imágenes propias del sitio
 ```
 

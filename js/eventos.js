@@ -120,10 +120,12 @@ function procesarIntento(jugadorSeleccionado) {
   if (resultado.estadoPartida === 'victoria') {
     detenerIntervaloTemporizador();
     reproducirSonidoVictoria();
+    guardarPartidaEnHistorial(estadoJuego.nombreJugadorHumano, 'ganada', estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
     mostrarModalVictoria(estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
   } else if (resultado.estadoPartida === 'derrota') {
     detenerIntervaloTemporizador();
     reproducirSonidoDerrota();
+    guardarPartidaEnHistorial(estadoJuego.nombreJugadorHumano, 'perdida', estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
     mostrarModalDerrota(estadoJuego.jugadorSecreto);
   } else if (intentoTieneAcierto(resultado.intento.resultado)) {
     reproducirSonidoAcierto();
@@ -157,6 +159,21 @@ function manejarClickReintentarError() {
 function manejarClickCerrarError() {
   ocultarModal('modal-error');
 }
+function manejarClickHistorial() {
+  renderizarHistorial();
+  mostrarModal('modal-historial');
+}
+function manejarClickOrdenarFecha() {
+  ordenActualHistorial = 'fecha';
+  renderizarHistorial();
+}
+function manejarClickOrdenarIntentos() {
+  ordenActualHistorial = 'intentos';
+  renderizarHistorial();
+}
+function manejarClickCerrarHistorial() {
+  ocultarModal('modal-historial');
+}
 function inicializarEventos() {
   document.getElementById('formulario-bienvenida').addEventListener('submit', manejarEnvioBienvenida);
   document.getElementById('input-busqueda').addEventListener('input', manejarEntradaBusqueda);
@@ -166,4 +183,8 @@ function inicializarEventos() {
   document.getElementById('boton-derrota-reiniciar').addEventListener('click', manejarClickReiniciar);
   document.getElementById('boton-error-reintentar').addEventListener('click', manejarClickReintentarError);
   document.getElementById('boton-error-cerrar').addEventListener('click', manejarClickCerrarError);
+  document.getElementById('boton-historial').addEventListener('click', manejarClickHistorial);
+  document.getElementById('boton-ordenar-fecha').addEventListener('click', manejarClickOrdenarFecha);
+  document.getElementById('boton-ordenar-intentos').addEventListener('click', manejarClickOrdenarIntentos);
+  document.getElementById('boton-cerrar-historial').addEventListener('click', manejarClickCerrarHistorial);
 }
