@@ -279,9 +279,6 @@
   font-size: 0.82rem;
   font-weight: 700;
 }
-.contenido-historial {
-  max-width: 34rem;
-}
 .controles-historial {
   display: flex;
   gap: 0.6rem;
@@ -359,6 +356,9 @@
   text-align: center;
   box-shadow: 0 10px 30px #1c212840;
 }
+.contenido-historial {
+  max-width: 34rem;
+}
 .titulo-modal {
   font-size: 1.4rem;
   color: #0b6e4f;
@@ -391,10 +391,19 @@ body.modo-oscuro {
   color: #e8ecf1;
 }
 .modo-oscuro .boton-secundario {
+  border: 1px solid #3ddc97;
   background: #1c232b;
+  color: #3ddc97;
 }
 .modo-oscuro .boton-secundario:hover {
   background: #2a323c;
+}
+.modo-oscuro .boton-secundario:disabled {
+  border: 1px solid #8b96a3;
+  color: #8b96a3;
+}
+.modo-oscuro .titulo-juego, .modo-oscuro .titulo-modal {
+  color: #3ddc97;
 }
 .modo-oscuro .barra-estado {
   border: 1px solid #333d47;
