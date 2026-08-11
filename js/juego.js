@@ -2,6 +2,7 @@
 var NUMERO_MAXIMO_INTENTOS = 8;
 var estadoJuego = {
   nombreJugadorHumano: '',
+  dificultad: 'facil',
   jugadorSecreto: null,
   intentosRealizados: [],
   intentosMaximos: NUMERO_MAXIMO_INTENTOS,
@@ -9,6 +10,11 @@ var estadoJuego = {
   horaFin: null,
   partidaTerminada: false
 };
+function calcularNivelPistasMedio(intentosRealizados) {
+  var nivel;
+  nivel = Math.floor(intentosRealizados / 2);
+  return nivel > 3 ? 3 : nivel;
+}
 function compararIgualdad(valorIntento, valorSecreto) {
   if (valorIntento === valorSecreto) {
     return 'correcto';

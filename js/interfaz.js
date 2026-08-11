@@ -84,6 +84,37 @@ function mostrarFotoSecreto(urlFoto) {
 function actualizarBlurFotoSecreto(nivelBlur) {
   document.getElementById('foto-jugador-secreto').className = 'foto-jugador-secreto blur-' + nivelBlur;
 }
+function configurarPistasSegunDificultad(dificultad) {
+  var fotoWrap, panelPistas;
+  fotoWrap = document.getElementById('foto-secreto-wrap');
+  panelPistas = document.getElementById('panel-pistas-medio');
+  if (dificultad === 'facil') {
+    fotoWrap.className = 'foto-secreto-wrap';
+    panelPistas.className = 'panel-pistas-medio oculto';
+  } else if (dificultad === 'medio') {
+    fotoWrap.className = 'foto-secreto-wrap oculto';
+    panelPistas.className = 'panel-pistas-medio';
+  } else {
+    fotoWrap.className = 'foto-secreto-wrap oculto';
+    panelPistas.className = 'panel-pistas-medio oculto';
+  }
+}
+function actualizarPistaChip(idChip, etiqueta, valor, revelada) {
+  var chip;
+  chip = document.getElementById(idChip);
+  if (revelada) {
+    chip.textContent = etiqueta + ': ' + valor;
+    chip.className = 'chip-pista pista-revelada';
+  } else {
+    chip.textContent = etiqueta + ': ?';
+    chip.className = 'chip-pista';
+  }
+}
+function actualizarPanelPistasMedio(nivelPistas, jugadorSecreto) {
+  actualizarPistaChip('pista-altura', 'Altura', jugadorSecreto.heightCm + 'cm', nivelPistas >= 1);
+  actualizarPistaChip('pista-edad', 'Edad', jugadorSecreto.age, nivelPistas >= 2);
+  actualizarPistaChip('pista-overall', 'Overall', jugadorSecreto.overall, nivelPistas >= 3);
+}
 function mostrarErrorBienvenida(mensaje) {
   var elemento;
   elemento = document.getElementById('error-nombre-jugador');

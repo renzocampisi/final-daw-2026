@@ -201,6 +201,23 @@
 .blur-0 {
   filter: blur(0);
 }
+.panel-pistas-medio {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.chip-pista {
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: #57606a;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.pista-revelada {
+  background: #0b6e4f;
+}
 .buscador {
   position: relative;
   display: flex;

@@ -41,6 +41,12 @@
         <label for="input-nombre-jugador" class="etiqueta">Tu nombre</label>
         <input id="input-nombre-jugador" class="campo-texto" type="text" maxlength="30" autocomplete="off">
         <p id="error-nombre-jugador" class="mensaje-error oculto">Ingresá al menos 3 letras.</p>
+        <label for="input-dificultad" class="etiqueta">Dificultad</label>
+        <select id="input-dificultad" class="campo-texto">
+          <option value="facil" selected>Fácil — foto del jugador desenfocada</option>
+          <option value="medio">Medio — pistas de altura, edad y overall</option>
+          <option value="dificil">Difícil — sin pistas extra</option>
+        </select>
         <button id="boton-empezar" class="boton-primario" type="submit">Jugar</button>
       </form>
     </section>
@@ -51,8 +57,13 @@
         <button id="boton-historial" class="boton-secundario" type="button">Historial</button>
         <button id="boton-reiniciar" class="boton-secundario" type="button">Reiniciar partida</button>
       </div>
-      <div class="foto-secreto-wrap">
+      <div id="foto-secreto-wrap" class="foto-secreto-wrap">
         <img id="foto-jugador-secreto" class="foto-jugador-secreto blur-8" src="" alt="Foto del jugador secreto, desenfocada">
+      </div>
+      <div id="panel-pistas-medio" class="panel-pistas-medio oculto">
+        <span id="pista-altura" class="chip-pista">Altura: ?</span>
+        <span id="pista-edad" class="chip-pista">Edad: ?</span>
+        <span id="pista-overall" class="chip-pista">Overall: ?</span>
       </div>
       <div class="buscador">
         <label for="input-busqueda" class="etiqueta">Buscar jugador</label>

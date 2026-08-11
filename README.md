@@ -37,9 +37,13 @@ El juego tiene sonidos cortos generados por código (sin archivos de audio): uno
 
 En la pantalla de juego hay un botón "Historial" que muestra un popup con todas las partidas jugadas: jugador, resultado, cantidad de intentos, fecha y duración. Se puede ordenar por fecha o por cantidad de intentos. Se guarda en el navegador (LocalStorage), así que se mantiene aunque se cierre la página.
 
-## Pista de la foto
+## Dificultad
 
-Mientras jugás, se ve la foto del jugador secreto bien desenfocada. Cada intento fallido la va aclarando un poco más, hasta que se ve nítida si ganás o si se te acaban los intentos.
+En la pantalla de bienvenida se elige la dificultad, que cambia qué pistas extra se ven durante la partida:
+
+- **Fácil**: se ve la foto del jugador secreto bien desenfocada, que se va aclarando con cada intento fallido, hasta quedar nítida si ganás o se te acaban los intentos.
+- **Medio**: no se ve la foto. En su lugar, se van revelando de a poco la altura, la edad y el overall del secreto (uno cada 2 intentos fallidos), aunque no los hayas adivinado.
+- **Difícil**: sin pistas extra de ningún tipo — solo el feedback de colores y flechas de cada intento.
 
 ## Cómo está organizado el proyecto
 

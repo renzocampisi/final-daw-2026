@@ -12,6 +12,8 @@ function manejarJugadorSecretoObtenido(jugadorSecreto) {
   detenerIntervaloTemporizador();
   mostrarFotoSecreto(jugadorSecreto.photo);
   actualizarBlurFotoSecreto(NUMERO_MAXIMO_INTENTOS);
+  actualizarPanelPistasMedio(0, jugadorSecreto);
+  configurarPistasSegunDificultad(estadoJuego.dificultad);
   mostrarPantallaJuego();
 }
 function manejarErrorJugadorSecreto() {
@@ -36,6 +38,7 @@ function manejarEnvioBienvenida(evento) {
   }
   ocultarErrorBienvenida();
   estadoJuego.nombreJugadorHumano = nombre;
+  estadoJuego.dificultad = document.getElementById('input-dificultad').value;
   iniciarNuevaPartida();
 }
 function normalizarTexto(texto) {
@@ -123,16 +126,19 @@ function procesarIntento(jugadorSeleccionado) {
     detenerIntervaloTemporizador();
     reproducirSonidoVictoria();
     actualizarBlurFotoSecreto(0);
+    actualizarPanelPistasMedio(3, estadoJuego.jugadorSecreto);
     guardarPartidaEnHistorial(estadoJuego.nombreJugadorHumano, 'ganada', estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
     mostrarModalVictoria(estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
   } else if (resultado.estadoPartida === 'derrota') {
     detenerIntervaloTemporizador();
     reproducirSonidoDerrota();
     actualizarBlurFotoSecreto(0);
+    actualizarPanelPistasMedio(3, estadoJuego.jugadorSecreto);
     guardarPartidaEnHistorial(estadoJuego.nombreJugadorHumano, 'perdida', estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
     mostrarModalDerrota(estadoJuego.jugadorSecreto);
   } else {
     actualizarBlurFotoSecreto(NUMERO_MAXIMO_INTENTOS - estadoJuego.intentosRealizados.length);
+    actualizarPanelPistasMedio(calcularNivelPistasMedio(estadoJuego.intentosRealizados.length), estadoJuego.jugadorSecreto);
     if (intentoTieneAcierto(resultado.intento.resultado)) {
       reproducirSonidoAcierto();
     }
