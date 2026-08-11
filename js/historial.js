@@ -9,7 +9,7 @@ function obtenerHistorial() {
   }
   return JSON.parse(guardado);
 }
-function guardarPartidaEnHistorial(nombreJugador, resultado, intentos, duracionSegundos) {
+function guardarPartidaEnHistorial(nombreJugador, resultado, intentos, duracionSegundos, puntaje) {
   var historial, partida;
   historial = obtenerHistorial();
   partida = {
@@ -17,7 +17,8 @@ function guardarPartidaEnHistorial(nombreJugador, resultado, intentos, duracionS
     resultado: resultado,
     intentos: intentos,
     fechaHora: Date.now(),
-    duracionSegundos: duracionSegundos
+    duracionSegundos: duracionSegundos,
+    puntaje: puntaje
   };
   historial.push(partida);
   localStorage.setItem(CLAVE_HISTORIAL, JSON.stringify(historial));
@@ -59,6 +60,7 @@ function crearFilaHistorial(partida) {
   fila.appendChild(crearCeldaResultado(String(partida.intentos), 'celda-historial'));
   fila.appendChild(crearCeldaResultado(formatearFechaHora(partida.fechaHora), 'celda-historial'));
   fila.appendChild(crearCeldaResultado(formatearTiempo(partida.duracionSegundos), 'celda-historial'));
+  fila.appendChild(crearCeldaResultado(String(partida.puntaje), 'celda-historial'));
   return fila;
 }
 function renderizarHistorial() {

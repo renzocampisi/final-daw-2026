@@ -108,7 +108,7 @@ function manejarEntradaBusqueda() {
   idTemporizadorBusqueda = setTimeout(ejecutarBusquedaDiferida, 300);
 }
 function procesarIntento(jugadorSeleccionado) {
-  var resultado;
+  var resultado, duracion, puntaje;
   if (estadoJuego.partidaTerminada) {
     return;
   }
@@ -127,14 +127,16 @@ function procesarIntento(jugadorSeleccionado) {
     reproducirSonidoVictoria();
     actualizarBlurFotoSecreto(0);
     actualizarPanelPistasMedio(3, estadoJuego.jugadorSecreto);
-    guardarPartidaEnHistorial(estadoJuego.nombreJugadorHumano, 'ganada', estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
-    mostrarModalVictoria(estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
+    duracion = calcularTiempoTranscurrido();
+    puntaje = calcularPuntaje(estadoJuego.dificultad, estadoJuego.intentosRealizados.length, duracion, true);
+    guardarPartidaEnHistorial(estadoJuego.nombreJugadorHumano, 'ganada', estadoJuego.intentosRealizados.length, duracion, puntaje);
+    mostrarModalVictoria(estadoJuego.intentosRealizados.length, duracion, puntaje);
   } else if (resultado.estadoPartida === 'derrota') {
     detenerIntervaloTemporizador();
     reproducirSonidoDerrota();
     actualizarBlurFotoSecreto(0);
     actualizarPanelPistasMedio(3, estadoJuego.jugadorSecreto);
-    guardarPartidaEnHistorial(estadoJuego.nombreJugadorHumano, 'perdida', estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido());
+    guardarPartidaEnHistorial(estadoJuego.nombreJugadorHumano, 'perdida', estadoJuego.intentosRealizados.length, calcularTiempoTranscurrido(), 0);
     mostrarModalDerrota(estadoJuego.jugadorSecreto);
   } else {
     actualizarBlurFotoSecreto(NUMERO_MAXIMO_INTENTOS - estadoJuego.intentosRealizados.length);

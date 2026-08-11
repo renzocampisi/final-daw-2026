@@ -45,6 +45,10 @@ En la pantalla de bienvenida se elige la dificultad, que cambia qué pistas extr
 - **Medio**: no se ve la foto. En su lugar, se van revelando de a poco la altura, la edad y el overall del secreto (uno cada 2 intentos fallidos), aunque no los hayas adivinado.
 - **Difícil**: sin pistas extra de ningún tipo — solo el feedback de colores y flechas de cada intento.
 
+## Puntaje
+
+Al ganar una partida se calcula un puntaje: empieza en 60 (Fácil), 80 (Medio) o 100 (Difícil) según la dificultad elegida, se restan 10 puntos por cada intento usado además del primero, y se suma un bonus por velocidad (+20 si ganaste en menos de 60 segundos, +10 en menos de 120, +0 si tardaste más). El puntaje mínimo en una partida ganada es 10. Si perdés, el puntaje queda en 0. Se muestra en el cartel de victoria y queda guardado en el historial.
+
 ## Cómo está organizado el proyecto
 
 ```

@@ -15,6 +15,23 @@ function calcularNivelPistasMedio(intentosRealizados) {
   nivel = Math.floor(intentosRealizados / 2);
   return nivel > 3 ? 3 : nivel;
 }
+var PUNTOS_BASE_DIFICULTAD = { facil: 60, medio: 80, dificil: 100 };
+function calcularBonusTiempo(duracionSegundos) {
+  if (duracionSegundos < 60) {
+    return 20;
+  } else if (duracionSegundos < 120) {
+    return 10;
+  }
+  return 0;
+}
+function calcularPuntaje(dificultad, intentosUsados, duracionSegundos, gano) {
+  var puntaje;
+  if (!gano) {
+    return 0;
+  }
+  puntaje = PUNTOS_BASE_DIFICULTAD[dificultad] - (intentosUsados - 1) * 10 + calcularBonusTiempo(duracionSegundos);
+  return puntaje < 10 ? 10 : puntaje;
+}
 function compararIgualdad(valorIntento, valorSecreto) {
   if (valorIntento === valorSecreto) {
     return 'correcto';

@@ -158,9 +158,9 @@ function mostrarModal(idModal) {
 function ocultarModal(idModal) {
   document.getElementById(idModal).className = 'modal oculto';
 }
-function mostrarModalVictoria(cantidadIntentos, segundosTranscurridos) {
+function mostrarModalVictoria(cantidadIntentos, segundosTranscurridos, puntaje) {
   var texto;
-  texto = 'Adivinaste en ' + cantidadIntentos + ' intento(s), en ' + formatearTiempo(segundosTranscurridos) + '.';
+  texto = 'Adivinaste en ' + cantidadIntentos + ' intento(s), en ' + formatearTiempo(segundosTranscurridos) + '. Puntaje: ' + puntaje + '.';
   document.getElementById('texto-victoria').textContent = texto;
   mostrarModal('modal-victoria');
 }
